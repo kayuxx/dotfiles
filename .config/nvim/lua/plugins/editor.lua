@@ -12,16 +12,17 @@ return {
 	{
 		"nvim-treesitter/nvim-treesitter",
 		opts = require("configs.treesitter"),
-		config = function(_, opts)
-			dofile(vim.g.base46_cache .. "syntax")
-			dofile(vim.g.base46_cache .. "treesitter")
-			require("nvim-treesitter.configs").setup(opts)
+	},
+
+	{ import = "nvchad.blink.lazyspec" },
+	{
+		"saghen/blink.cmp",
+		opts = function()
+			dofile(vim.g.base46_cache .. "blink")
+			return require("configs.blink")
 		end,
 	},
-	{
-		"hrsh7th/nvim-cmp",
-		opts = require("configs.cmp"),
-	},
+
 	{
 		"lewis6991/gitsigns.nvim",
 		event = "User FilePost",
@@ -32,8 +33,11 @@ return {
 	{
 		"stevearc/oil.nvim",
 		event = "VeryLazy",
-		config = function()
-			require("oil").setup(require("configs.oil"))
-		end,
+		opts = require("configs.oil"),
+	},
+	{
+		"gsuuon/note.nvim",
+		cmd = { "Note" },
+		opts = require("configs.note"),
 	},
 }

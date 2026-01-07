@@ -1,0 +1,17 @@
+general.import = [
+  "./linux.toml"
+]
+
+[font]
+normal = { family = "Hack Nerd Font", style = "Regular" }
+size = 11
+
+[window]
+dynamic_padding = false
+dimensions = { columns = 135, lines = 30 }
+[cursor]
+blink_interval = 500
+blink_timeout = 0
+
+[env]
+TERMINAL = "ALACRITTY"

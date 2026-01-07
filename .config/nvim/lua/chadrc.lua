@@ -1,10 +1,10 @@
+---@type ChadrcConfig
 local M = {}
 
 -- Path to overriding theme and highlights files
 local highlights = require("highlights")
-
 M.base46 = {
-	theme = "gruvchad",
+	theme = "yoru",
 	theme_toggle = { "rosepine", "palenight" },
 	changed_themes = highlights.changed_themes,
 	transparency = false,
@@ -15,7 +15,7 @@ M.base46 = {
 M.ui = {
 	statusline = {
 		separator_style = "default",
-		theme = "default",
+		theme = "vscode_colored",
 	},
 
 	tabufline = {
@@ -30,41 +30,71 @@ M.ui = {
 	},
 
 	cmp = {
+		enabled = true,
 		style = "atom",
+		format_colors = {
+			tailwind = true,
+		},
 	},
 
 	telescope = {
 		style = "bordered",
 	},
+}
 
-	nvdash = {
-		load_on_startup = true,
-		header = {
-			"██╗  ██╗ █████╗ ██╗   ██╗██╗   ██╗██╗  ██╗██╗  ██╗",
-			"██║ ██╔╝██╔══██╗╚██╗ ██╔╝██║   ██║╚██╗██╔╝╚██╗██╔╝",
-			"█████╔╝ ███████║ ╚████╔╝ ██║   ██║ ╚███╔╝  ╚███╔╝ ",
-			-- "██╔═██╗ ██╔══██║  ╚██╔╝  ██║   ██║ ██╔██╗  ██╔██╗ ",
-			"██║  ██╗██║  ██║   ██║   ╚██████╔╝██╔╝ ██╗██╔╝ ██╗",
-			"╚═╝  ╚═╝╚═╝  ╚═╝   ╚═╝    ╚═════╝ ╚═╝  ╚═╝╚═╝  ╚═╝",
-		},
-		buttons = {
-			{ "  Find File", "f + f", "Telescope find_files" },
-			{ "  Browse Files", "f + l", "Oil" },
-			{ "󰈚  Recent Files", "f + o", "Telescope oldfiles" },
-			{ "󰈭  Find Word", "f + w", "Telescope live_grep" },
-			{ "  Themes", "Spc + th", "Telescope themes" },
-			-- { "  Mappings", "Spc + ch", "NvCheatsheet" },
-		},
+M.nvdash = {
+	load_on_startup = true,
+	--
+	-- 	-- header = {
+	-- 	-- 	-- "██╗  ██╗ █████╗ ██╗   ██╗██╗   ██╗██╗  ██╗██╗  ██╗",
+	-- 	-- 	-- "██║ ██╔╝██╔══██╗╚██╗ ██╔╝██║   ██║╚██╗██╔╝╚██╗██╔╝",
+	-- 	-- 	-- "█████╔╝ ███████║ ╚████╔╝ ██║   ██║ ╚███╔╝  ╚███╔╝ ",
+	-- 	-- 	-- "██║  ██╗██║  ██║   ██║   ╚██████╔╝██╔╝ ██╗██╔╝ ██╗",
+	-- 	-- 	-- "╚═╝  ╚═╝╚═╝  ╚═╝   ╚═╝    ╚═════╝ ╚═╝  ╚═╝╚═╝  ╚═╝",
+	-- 	--  }
+	--
+	header = {
+		-- "                  ▄▄         ▄ ▄▄▄▄▄▄▄                    ",
+		"                ▄▀███▄     ▄██ █████▀                     ",
+		"                ██▄▀███▄   ███                            ",
+		"                ███  ▀███▄ ███                            ",
+		"                ███    ▀██ ███                            ",
+		"                ███      ▀ ███                            ",
+		"                ▀██ █████▄▀█▀▄██████▄                     ",
+		-- "                  ▀ ▀▀▀▀▀▀▀ ▀▀▀▀▀▀▀▀▀▀                    ",
+		"                                                          ",
+		"                  Powered By  eovim                     ",
+		-- "                                                          ",
 	},
 }
 
 M.lsp = {
 	semantic_tokens = false, -- should be true but nvchad dosen't really support it in base46
-	signature = true,
+	signature = false,
 }
 
 M.mason = {
 	cmd = true,
+	pkgs = {
+		-- lua stuff
+		"lua-language-server",
+		"stylua",
+		-- web dev stuff
+		"css-lsp",
+		"html-lsp",
+		"typescript-language-server",
+		"deno",
+		"prettierd",
+		"ast-grep",
+		"eslint_d",
+		"tailwindcss-language-server",
+		"astro-language-server",
+		-- "prisma-language-server",
+		-- md
+		"alex",
+		--yaml
+		"actionlint",
+	},
 }
 
 return M

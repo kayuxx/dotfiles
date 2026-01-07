@@ -15,23 +15,4 @@ return {
 			},
 		},
 	},
-	{
-		"nvchad/base46",
-		lazy = false,
-	},
-	{
-		"rose-pine/neovim",
-		enabled = false,
-		-- enabled = require("nvconfig").ui.theme == "rosepine",
-		-- lazy = false,
-		-- priority = 1000,
-	},
-
-	{
-		"folke/tokyonight.nvim",
-		enabled = false,
-		-- enabled = require("nvconfig").ui.theme == "tokyonight",
-		-- lazy = false,
-		-- priority = 1000,
-	},
 }

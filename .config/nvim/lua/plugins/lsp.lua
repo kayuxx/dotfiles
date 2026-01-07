@@ -21,12 +21,7 @@ return {
 		},
 		-- manage lsp servers
 		{
-			"williamboman/mason.nvim",
-			opts = require("configs.mason").mason,
-		},
-		{
 			"williamboman/mason-lspconfig.nvim",
-			opts = require("configs.mason").mason_lspconfig,
 		},
 	},
 }

@@ -3,7 +3,7 @@
 -- base30 variable names can also be used as colors
 local M = {}
 
-local setHlStyles = require("utils").setHlStyles
+local set_hl_styles = require("utils").set_hl_styles
 
 local styles = {
 	enable = {
@@ -91,6 +91,10 @@ M.override = {
 	CmpDoc = {
 		link = "",
 	},
+	-- St_CommandMode = { bg = "none" },
+	-- St_NormalMode = { bg = "none" },
+	-- St_VisualMode = { bg = "none" },
+	-- St_InsertMode = { bg = "none" },
 }
 
 ---@type HLTable
@@ -105,6 +109,35 @@ M.add = {
 	SagaBorder = { link = "CmpDocBorder" },
 }
 
-M.override = setHlStyles(styles, M.override)
+-- it should use base46 variables to get colors just like hl_override
+local tag_color = true and "#b28500" or "#849900"
+
+M.changed_themes = {
+	gruvchad = {
+		polish_hl = {
+
+			defaults = {
+				Normal = { bg = "#151718" },
+			},
+		},
+	},
+	solarized_osaka = {
+		polish_hl = {
+			statusline = {
+				St_CommandMode = { bg = "none", bold = false },
+				St_NormalMode = { bg = "none", bold = false },
+				St_VisualMode = { bg = "none", bold = false },
+				St_InsertMode = { bg = "none", bold = false },
+			},
+			treesitter = {
+				["@tag"] = { fg = tag_color },
+				["@tag.builtin"] = { fg = tag_color },
+				Tag = { fg = tag_color },
+			},
+		},
+	},
+}
+
+M.override = set_hl_styles(styles, M.override)
 
 return M

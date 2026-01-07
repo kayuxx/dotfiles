@@ -1,3 +1,5 @@
+local detail = false
+
 return {
 	keymaps = {
 		["g?"] = "actions.show_help",
@@ -16,12 +18,23 @@ return {
 		["gx"] = "actions.open_external",
 		["g."] = "actions.toggle_hidden",
 		["g\\"] = "actions.toggle_trash",
+		["gd"] = {
+			desc = "Toggle file detail view",
+			callback = function()
+				detail = not detail
+				if detail then
+					require("oil").set_columns({ "icon", "permissions", "size", "mtime" })
+				else
+					require("oil").set_columns({ "icon" })
+				end
+			end,
+		},
 	},
- float = {
-    padding = 2,
-    max_width = 120,
-    max_height = 20,
-    border = "solid",
-  },
-}
 
+	float = {
+		padding = 2,
+		max_width = 120,
+		max_height = 20,
+		border = "solid",
+	},
+}
